@@ -21,19 +21,11 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
-const GOOGLE_HEADER_SIGNATURE = 'Google-Assistant-Signature';
-const PRIVATE_KEY = 'YOUR_PRIVATE_KEY';
-
 // [START YourAction]
 app.post('/', function (req, res) {
   const assistant = new Assistant({request: req, response: res});
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
-
-  if (!assistant.isRequestFromApiAi(GOOGLE_HEADER_SIGNATURE, PRIVATE_KEY)) {
-    console.log('Request is not from trusted source (API.AI)');
-    return;
-  }
 
   // Fulfill action business logic
   function responseHandler (assistant) {

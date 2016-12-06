@@ -15,7 +15,6 @@ See the developer guide and release notes at https://developers.google.com/actio
 1. Create a new API.AI agent at http://api.ai
 1. Deploy the app to your preferred hosting environment (we recommend Google App Engine)
 1. In the Fulfillment page, enable Fulfillment and specify the deployment URL
-1. In the Headers section, add a key for "Google-Assistant-Signature", with your own private key value
 1. In any relevant intents, enable the webhook for the response
 
 ## Documentation
