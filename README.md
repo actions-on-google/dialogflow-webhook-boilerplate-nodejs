@@ -1,36 +1,41 @@
-# Actions On Google Webhook Template Sample for Node.js
-==================================================
+# Actions on Google Webhook Template using Node.js
 
-This sample shows how to create a webhook for API.AI and Google Assistant
-
+This webhook template sets up everything you need to build your fulfillment
+business logic for your API.AI agent.
 
 ## Setup Instructions
 
-# Pre-requisites
- 1. API.AI: [https://api.ai](https://api.ai)
+### Pre-requisites
+ 1. API.AI account: [https://api.ai](https://api.ai)
+ 2. Google Cloud project: [https://console.cloud.google.com/project](https://console.cloud.google.com/project)
 
-See the developer guide and release notes at https://developers.google.com/actions/ for more details.
+See the developer guide and release notes at [https://developers.google.com/actions/](https://developers.google.com/actions/) for more details.
 
-# Steps:
-1. Create a new API.AI agent at http://api.ai
-1. Deploy the app to your preferred hosting environment (we recommend Google App Engine)
-1. In the Fulfillment page, enable Fulfillment and specify the deployment URL
-1. In any relevant intents, enable the webhook for the response
-
-## Documentation
-* Actions on Google: https://developers.google.com/actions/
+### Steps
+1. Create a new agent in API.AI [https://api.ai](https://api.ai).
+1. Deploy this app to your preferred hosting environment (we recommend Google App Engine)
+1. Set the "Fulfillment" webhook URL to the hosting URL.
+1. In any relevant intents, enable the Fulfillment for the response.
+1. Build out your agent and business logic.
+1. Make sure all domains are turned off.
+1. Enable Actions on Google in the Integrations.
+1. Provide an invocation name for the action.
+1. Authorize and preview the action in the [web simulator](https://developers.google.com/actions/tools/web-simulator).
 
 ## References and How to report bugs
-* If you find any issues, please open a bug here on GitHub
+* Actions on Google documentation: [https://developers.google.com/actions/](https://developers.google.com/actions/).
+* If you find any issues, please open a bug here on GitHub.
+* Questions are answered on [StackOverflow](https://stackoverflow.com/questions/tagged/actions-on-google).
 
-How to make contributions?
-Please read and follow the steps in the CONTRIBUTING.md
+## How to make contributions?
+Please read and follow the steps in the CONTRIBUTING.md.
 
-License
-See LICENSE.md
+## License
+See LICENSE.md.
 
 ## Terms
-Your use of this sample is subject to, and by using or downloading the sample files you agree to comply with, the [Google APIs Terms of Service](https://developers.google.com/terms/) and the [Actions On Google Developer Terms of Service](https://developers.google.com/actions/docs/terms/).
+Your use of this sample is subject to, and by using or downloading the sample files you agree to comply with, the [Google APIs Terms of Service](https://developers.google.com/terms/).
 
 ## Google+
-Actions on Google Developers Community on Google+ [http://g.co/actionsdev](http://g.co/actionsdev)
+Actions on Google Developers Community on Google+ [https://g.co/actionsdev](https://g.co/actionsdev).
+
