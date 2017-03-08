@@ -13,10 +13,13 @@ See the developer guide and release notes at [https://developers.google.com/acti
 
 ### Steps
 1. Create a new agent in API.AI [https://api.ai](https://api.ai).
-1. Deploy this app to your preferred hosting environment (we recommend Google App Engine)
+1. Deploy this app to your preferred hosting environment
+ (we recommend [Google Cloud Functions](https://cloud.google.com/functions/docs/tutorials/http)).
 1. Set the "Fulfillment" webhook URL to the hosting URL.
 1. In any relevant intents, enable the Fulfillment for the response.
-1. Build out your agent and business logic.
+1. Build out your agent and business logic by adding function handlers for API.AI actions.
+1. For each API.AI action, set a new key/value pair on the actionMap, reflecting
+ the action name and corresponding function handler on the actionMap in **index.js**.
 1. Make sure all domains are turned off.
 1. Enable Actions on Google in the Integrations.
 1. Provide an invocation name for the action.
