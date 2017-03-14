@@ -13,7 +13,7 @@ See the developer guide and release notes at [https://developers.google.com/acti
 
 ### Steps
 1. Create a new agent in API.AI [https://api.ai](https://api.ai).
-1. Deploy this app to your preferred hosting environment
+1. Deploy this action to your preferred hosting environment
  (we recommend [Google Cloud Functions](https://cloud.google.com/functions/docs/tutorials/http)).
 1. Set the "Fulfillment" webhook URL to the hosting URL.
 1. In any relevant intents, enable the Fulfillment for the response.
