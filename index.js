@@ -14,23 +14,23 @@
 'use strict';
 
 process.env.DEBUG = 'actions-on-google:*';
-const Assistant = require('actions-on-google').ApiAiAssistant;
+const App = require('actions-on-google').ApiAiApp;
 
 // [START YourAction]
-exports.yourAction = (req, res) => {
-  const assistant = new Assistant({request: req, response: res});
-  console.log('Request headers: ' + JSON.stringify(req.headers));
-  console.log('Request body: ' + JSON.stringify(req.body));
+exports.yourAction = (request, response) => {
+  const app = new App({request, response});
+  console.log('Request headers: ' + JSON.stringify(request.headers));
+  console.log('Request body: ' + JSON.stringify(request.body));
 
   // Fulfill action business logic
-  function responseHandler (assistant) {
+  function responseHandler (app) {
     // Complete your fulfillment logic and send a response
-    assistant.tell('Hello, World!');
+    app.ask('Hello, World!');
   }
 
   const actionMap = new Map();
   actionMap.set('<API.AI_action_name>', responseHandler);
 
-  assistant.handleRequest(actionMap);
+  app.handleRequest(actionMap);
 };
 // [END YourAction]
