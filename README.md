@@ -1,4 +1,4 @@
-# Actions on Google Webhook Template using Node.js
+# Actions on Google: Webhook Template using Node.js
 
 This webhook template sets up everything you need to build your fulfillment
 business logic for your Assistant app built on API.AI.
