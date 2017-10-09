@@ -14,12 +14,11 @@
 'use strict';
 
 process.env.DEBUG = 'actions-on-google:*';
-const App = require('actions-on-google').ApiAiApp;
+const { DialogflowApp } = require('actions-on-google');
 const functions = require('firebase-functions');
 
-// [START YourAction]
 exports.yourAction = functions.https.onRequest((request, response) => {
-  const app = new App({request, response});
+  const app = new DialogflowApp({request, response});
   console.log('Request headers: ' + JSON.stringify(request.headers));
   console.log('Request body: ' + JSON.stringify(request.body));
 
@@ -34,4 +33,3 @@ exports.yourAction = functions.https.onRequest((request, response) => {
 
   app.handleRequest(actionMap);
 });
-// [END YourAction]
