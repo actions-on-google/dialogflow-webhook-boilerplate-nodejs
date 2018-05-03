@@ -4,8 +4,14 @@ This webhook template sets up everything you need to build your fulfillment
 business logic for your Assistant app built on Dialogflow.
 
 ## Setup Instructions
+Choose one of the two options listed below for setup. You only need to complete one of the two options below to setup this sample.
 
-### Steps
+### Option 1: Add to Dialogflow (recommended)
+Click on the **Add to Dialogflow** button below and follow the prompts to create a new agent:
+
+[![Webhook Template](https://storage.googleapis.com/dialogflow-oneclick/deploy.svg "Webhook Template")](https://console.dialogflow.com/api-client/oneclick?templateUrl=https%3A%2F%2Fstorage.googleapis.com%2Fdialogflow-oneclick%2Fagent.zip&agentName=ActionsOnGoogleTemplateSample)
+
+### Option 2: Dialogflow restore and Firebase CLI
 1. Use the [Actions on Google Console](https://console.actions.google.com) to add a new project with a name of your choosing and click *Create Project*.
 1. Click *Skip*, located on the top right to skip over category selection menu.
 1. On the left navigation menu under *BUILD*, click on *Actions*. Click on *Add Your First Action* and choose your app's language(s).
@@ -19,7 +25,9 @@ business logic for your Assistant app built on Dialogflow.
 1. Build out your agent and business logic by adding function handlers for Dialogflow actions.
 1. For each Dialogflow action, set a new key/value pair on the actionMap, reflecting
  the action name and corresponding function handler on the actionMap in **index.js**.
-1. Select *Integrations* from the left navigation menu and open the *Integration Settings* menu for Actions on Google.
+
+## Test on the Actions on Google simulator
+1. Open [Dialogflow's *Integrations* page]](https://console.dialogflow.com/api-client/#/agent//integrations) from the left navigation menu and open the *Integration Settings* menu for Actions on Google.
 1. Enable *Auto-preview changes* and Click *Test*. This will open the Actions on Google simulator.
 1. Click *View* to open the Actions on Google simulator.
 1. Type `Talk to my test app` in the simulator, or say `OK Google, talk to my test app` to any Actions on Google enabled device signed into your developer account.
