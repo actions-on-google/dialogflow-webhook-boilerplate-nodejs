@@ -15,11 +15,12 @@
     "test": "npm run lint"
   },
   "dependencies": {
-    "actions-on-google": "^2.0.0",
+    "actions-on-google": "^2.5.0",
     "firebase-admin": "^5.11.0",
     "firebase-functions": "^1.0.0"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "eslint": "^4.19.0",
     "eslint-config-google": "^0.9.1"
   }
