@@ -11,18 +11,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 'use strict';
+
+const { findByTopicIntent } = require('./findByTopicIntent');
+const { findByCourseIntent } = require('./findByCourseIntent');
 
 const {dialogflow} = require('actions-on-google');
 const functions = require('firebase-functions');
 
 const app = dialogflow({debug: true});
 
+let duong = 'duong';
+
 app.intent('Default Welcome Intent', (conv) => {
-  conv.close('Hello, World!');
+  duong = 'hello duong';
+  conv.ask('Hi I Go1 Assistant');
   // Complete your fulfillment logic and
   // send a response when the function is done executing
 });
+
+app.intent('find_by_topic', findByTopicIntent);
+
+app.intent('find_my_course', findByCourseIntent);
 
 exports.yourAction = functions.https.onRequest(app);
 
