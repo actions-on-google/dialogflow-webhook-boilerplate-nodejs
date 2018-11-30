@@ -14,6 +14,7 @@ function makeUrl(url) {
 
 module.exports = {
   get: (url) => {
+    console.log('url', makeUrl(url));
     return axios.get(makeUrl(url));
   },
 

@@ -14,18 +14,19 @@
 
 'use strict';
 
-const { findByTopicIntent, findByTopicMoreIntent } = require('./findByTopicIntent');
+const { findByTopicIntent, findByTopicMoreIntent, findByTopicSelected } = require('./findByTopicIntent');
 
 const { findByCourseIntent } = require('./findByCourseIntent');
 const { helpIntent } = require('./helpIntent');
 
-const {dialogflow} = require('actions-on-google');
+const {dialogflow, Suggestions} = require('actions-on-google');
 const functions = require('firebase-functions');
 
-const app = dialogflow({debug: true});
+const app = dialogflow({debug: false});
 
 app.intent('Default Welcome Intent', (conv) => {
   conv.ask(`Hi I'm Go1 Assistant`);
+  conv.ask(new Suggestions('I want to learn about duong'));
   // Complete your fulfillment logic and
   // send a response when the function is done executing
 });
@@ -33,6 +34,8 @@ app.intent('Default Welcome Intent', (conv) => {
 app.intent('find_by_topic', findByTopicIntent);
 
 app.intent('find_by_topic_more', findByTopicMoreIntent);
+
+app.intent('find_by_topic_selected', findByTopicSelected);
 
 app.intent('find_my_course', findByCourseIntent);
 
