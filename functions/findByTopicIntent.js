@@ -1,43 +1,11 @@
-const { SimpleResponse, Carousel, Image, Button } = require('actions-on-google');
-
-const listItems = {
-  ['FIRST']: {
-    title: 'Machine Learning For Beginners',
-    description: `Machine learning was defined in 90's by Arthur Samuel described as the,” it is a field of study that gives the ability to the computer for self-learn ...`,
-    image: new Image({
-      url: 'https://cdn-images-1.medium.com/max/1200/1*M9le42saJxWlOYyYvhKtPA.jpeg',
-      accessibilityText: 'Enrol now',
-    }),
-    buttons: new Button({
-      title: 'Enrol now',
-      url: 'https://www.google.com.vn/search?q=machine+learning&oq=machine+learning&aqs=chrome..69i57j0l2j69i60l3.3732j0j1&sourceid=chrome&ie=UTF-8',
-    }),
-  },
-  ['SECOND']: {
-    title: 'Machine Learning for Marketing',
-    description: `AI and machine learning will have the most profound impact on marketing in 2018 because it will fundamentally make ‘marketing’ more human…Which is ironic in and of itself.`,
-    image: new Image({
-      url: 'https://www.ie.edu/exponential-learning/blog/wp-content/uploads/2018/01/MachineLearninginMarketing-1621x1000.jpg',
-      accessibilityText: 'Enrol now'
-    })
-  },
-  ['THIRD']: {
-    title: 'An Introduction to Machine Learning',
-    description: 'Machine learning is a subfield of artificial intelligence (AI). The goal of machine learning generally is to understand the structure of data and fit that data into models that can be understood and utilized by people.',
-    image: new Image({
-      url: 'https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/introduction-to-machine-learning_social.png?1510178550',
-      accessibilityText: 'Enrol now',
-    })
-  },
-  ['FOURTH']: {
-    title: 'Neural-Network Hardware Drives the Latest Machine-Learning Craze',
-    description: 'From self-driving cars to the industrial Internet of Things, neural networks are reshaping the problem-solving methods of developers.',
-    image: new Image({
-      url: 'https://www.electronicdesign.com/sites/electronicdesign.com/files/styles/article_featured_standard/public/0718TR_Promo.jpg?itok=t70vFYFv',
-      accessibilityText: 'Enrol now',
-    })
-  }
-}
+const {
+  SimpleResponse,
+  Carousel,
+  Image,
+  Button
+} = require("actions-on-google");
+const buildUrl = require("build-url");
+const { post, get } = require("./api");
 
 /**
  * Greet the user and direct them to next turn
@@ -46,22 +14,87 @@ const listItems = {
  */
 
 module.exports = {
-  findByTopicIntent: (conv) => {
+  findByTopicIntent: conv => {
     const { topics } = conv.parameters;
-    conv.ask(new SimpleResponse({
-      speech: '<speak>This some course about ' + topics+'</speak>',
-      textToSpeech: 'This some course about ' + topics,
-    }));
-    conv.ask(new Carousel({
-      display: 'WHITE',
-      title: 'This some course about ' + topics,
-      items: listItems,
-    }));
+
+    const url = buildUrl("", {
+      path: "explore-service/lo",
+      queryParams: {
+        admin: 1,
+        event: "all",
+        marketplace: false,
+        "type[]": "course",
+        limit: 4,
+        portal: 6692083,
+        "keyword[all]": topics,
+        "sort[0][field]": "relevant",
+        "sort[0][direction]": "desc",
+        offset: 0,
+        keywordQueryType: 2,
+        context: "explore"
+      }
+    });
+
+    return get(url).then(res => {
+      conv.ask(
+        new SimpleResponse({
+          speech: "<speak>This some course about " + topics + "</speak>",
+          textToSpeech: "Yeah!. This some course about " + topics
+        })
+      );
+      const items = convertHitsToList(res.data.hits);
+      conv.data.courses = items;
+      conv.ask(
+        new Carousel({
+          items
+        })
+      );
+    });
   },
 
-  findByTopicMoreIntent: (conv) => {
-    const { topics } = conv.contexts.input['find_by_topic-followup'].parameters;
-    conv.ask('Ok, load more ' + topics);
+  findByTopicMoreIntent: conv => {
+    const { topics } = conv.contexts.input["find_by_topic-followup"].parameters;
+    conv.ask("Ok, load more " + topics);
+    return get(url).then(res => {
+      conv.ask(
+        new SimpleResponse({
+          speech: "<speak>More course about " + topics + "</speak>",
+          textToSpeech: "Yeah!. This some course about " + topics + ". You can choose course below: "
+        })
+      );
+      conv.ask(
+        new Carousel({
+          items: convertHitsToList(res.data.hits)
+        })
+      );
+    });
+  },
+
+  findByTopicSelected: (conv, params, option) => {
+    const course = conv.data.courses[option];
     
+    if (course) {
+      conv.ask(new SimpleResponse("You selected enroll for course: " + course.title + ". "));
+      conv.ask(new SimpleResponse('We will enrol you into this course, waiting...'));
+    } else {
+      conv.ask("Course which you selected dont exists");
+    }
   }
+};
+
+function convertHitsToList(hits) {
+  const KEYS = ["FIRST", "SECOND", "THIRD", "FOURTH"];
+  const listItems = {};
+  hits.forEach((item, index) => {
+    listItems[KEYS[index]] = {
+      title: item.title,
+      description: item.description,
+      image: new Image({
+        url: item.image,
+        accessibilityText: item.title
+      })
+    };
+  });
+
+  return listItems;
 }
