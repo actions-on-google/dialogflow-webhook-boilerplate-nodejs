@@ -39,6 +39,12 @@ const listItems = {
   }
 }
 
+/**
+ * Greet the user and direct them to next turn
+ * @param {DialogflowConversation} conv DialogflowConversation instance
+ * @return {void}
+ */
+
 module.exports = {
   findByTopicIntent: (conv) => {
     const { topics } = conv.parameters;
@@ -51,5 +57,11 @@ module.exports = {
       title: 'This some course about ' + topics,
       items: listItems,
     }));
+  },
+
+  findByTopicMoreIntent: (conv) => {
+    const { topics } = conv.contexts.input['find_by_topic-followup'].parameters;
+    conv.ask('Ok, load more ' + topics);
+    
   }
 }

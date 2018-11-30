@@ -14,26 +14,28 @@
 
 'use strict';
 
-const { findByTopicIntent } = require('./findByTopicIntent');
+const { findByTopicIntent, findByTopicMoreIntent } = require('./findByTopicIntent');
+
 const { findByCourseIntent } = require('./findByCourseIntent');
+const { helpIntent } = require('./helpIntent');
 
 const {dialogflow} = require('actions-on-google');
 const functions = require('firebase-functions');
 
 const app = dialogflow({debug: true});
 
-let duong = 'duong';
-
 app.intent('Default Welcome Intent', (conv) => {
-  duong = 'hello duong';
-  conv.ask('Hi I Go1 Assistant');
+  conv.ask(`Hi I'm Go1 Assistant`);
   // Complete your fulfillment logic and
   // send a response when the function is done executing
 });
 
 app.intent('find_by_topic', findByTopicIntent);
 
+app.intent('find_by_topic_more', findByTopicMoreIntent);
+
 app.intent('find_my_course', findByCourseIntent);
 
-exports.yourAction = functions.https.onRequest(app);
+app.intent('Help', helpIntent);
 
+exports.yourAction = functions.https.onRequest(app);
