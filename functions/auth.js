@@ -1,6 +1,3 @@
 module.exports = {
-  baseUrl: 'https://api.go1.co/',
-  jwt: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnbzEudXNlciIsInZlciI6InYxOC44LjUuMCIsImV4cCI6MTU0NjEzNjA5NCwib2JqZWN0Ijp7InR5cGUiOiJ1c2VyIiwiY29udGVudCI6eyJpZCI6MTI4ODM5NSwiaW5zdGFuY2UiOiJhY2NvdW50cy5nb2NhdGFseXplLmNvbSIsInByb2ZpbGVfaWQiOjQ2MTI4OCwibWFpbCI6IndvbmRlcm1pbmRzQG1haWxpbmF0b3IuY29tIiwibmFtZSI6IlRpZW4gVHJhbiIsImFjY291bnRzIjpbeyJpZCI6MTI4ODM5NiwiaW5zdGFuY2UiOiJ3b25kZXJtaW5kcy5teWdvMS5jb20iLCJwb3J0YWxfaWQiOjY2OTIwODMsInByb2ZpbGVfaWQiOjIsInJvbGVzIjpbIlN0dWRlbnQiLCJhZG1pbmlzdHJhdG9yIl19XX19fQ.vRua82Al9r2nLJbg1oBxg21I_p-vA8f7fLYZcv-NHXU',
-  portal: 6692083,
-  uuid: '971953cc-315f-4a59-bb57-b8af00c3df17',
+  baseUrl: 'https://api.go1.com',
 }
