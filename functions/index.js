@@ -13,19 +13,16 @@
 
 'use strict';
 
-const { findByTopicIntent, findByTopicMoreIntent, findByTopicSelected } = require('./findByTopicIntent');
+const { findByTopicIntent, findByTopicMoreIntent, findByTopicSelected, findByTopicEnroll } = require('./findByTopicIntent');
 
 const { findByCourseIntent } = require('./findByCourseIntent');
 const { helpIntent } = require('./helpIntent');
 
-const {dialogflow, Suggestions} = require('actions-on-google');
-'use strict';
-
-const {dialogflow, SignIn} = require('actions-on-google');
+const {dialogflow, SignIn, Suggestions} = require('actions-on-google');
 const functions = require('firebase-functions');
 const app = dialogflow({
-  debug: true,
-  clientId: '58b41d735b8960abaed7c41c2267f2d26b7602c3',
+  debug: false,
+  // clientId: '58b41d735b8960abaed7c41c2267f2d26b7602c3',
 });
 
 const jwt = require('jsonwebtoken');
@@ -46,6 +43,8 @@ app.intent('Get Signin', async (conv, params, signin) => {
     setJWT(token);
 
     conv.ask(`I got your portal, ${payload.sub}. What do you want to do next?`);
+    conv.ask(new Suggestions('Tell me about Big Data'));
+
   } else {
     conv.ask(`I won't be able to save your data, but what do you want to do next?`)
   }
@@ -56,6 +55,8 @@ app.intent('find_by_topic', findByTopicIntent);
 app.intent('find_by_topic_more', findByTopicMoreIntent);
 
 app.intent('find_by_topic_selected', findByTopicSelected);
+
+app.intent('find_by_topic_enroll', findByTopicEnroll);
 
 app.intent('find_my_course', findByCourseIntent);
 

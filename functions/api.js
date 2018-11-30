@@ -1,4 +1,4 @@
-const { baseUrl } = require('./auth');
+const { baseUrl, jwt } = require('./auth');
 const axios = require('axios');
 
 axios.defaults.baseURL = baseUrl;
