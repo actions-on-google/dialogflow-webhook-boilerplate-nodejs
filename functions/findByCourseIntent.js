@@ -16,5 +16,17 @@ module.exports = {
         url: 'https://www.google.com.vn/search?q=machine+learning&oq=machine+learning&aqs=chrome..69i57j0l2j69i60l3.3732j0j1&sourceid=chrome&ie=UTF-8',
       }),
     }));
+  },
+
+  convertCourseToBasicCard: (course) => {
+    return {
+      title: course.title,
+      image: new Image({
+        url: course.image.url,
+        alt: course.title,
+      }),
+      text: course.description,
+    }
   }
 }
+

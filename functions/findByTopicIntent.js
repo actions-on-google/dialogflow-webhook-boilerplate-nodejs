@@ -2,10 +2,16 @@ const {
   SimpleResponse,
   Carousel,
   Image,
-  Button
+  Button,
+  Suggestions,
+  BasicCard,
 } = require("actions-on-google");
+
+const { Card, Suggestion } = require("dialogflow-fulfillment");
+
 const buildUrl = require("build-url");
 const { post, get } = require("./api");
+const { convertCourseToBasicCard } = require('./findByCourseIntent');
 
 /**
  * Greet the user and direct them to next turn
@@ -74,8 +80,11 @@ module.exports = {
     const course = conv.data.courses[option];
     
     if (course) {
-      conv.ask(new SimpleResponse("You selected enroll for course: " + course.title + ". "));
-      conv.ask(new SimpleResponse('We will enrol you into this course, waiting...'));
+      conv.ask("You selected for course: " + course.title + ". ");
+      // conv.ask(new SimpleResponse('We will enrol you into this course, waiting...'));
+      console.log('basic card', JSON.stringify(convertCourseToBasicCard(course)));
+      conv.ask(new BasicCard(convertCourseToBasicCard(course)));
+      conv.ask(new Suggestions(['Enrol this course'],['Find other course']));
     } else {
       conv.ask("Course which you selected dont exists");
     }
@@ -91,7 +100,7 @@ function convertHitsToList(hits) {
       description: item.description,
       image: new Image({
         url: item.image,
-        accessibilityText: item.title
+        alt: item.title
       })
     };
   });
