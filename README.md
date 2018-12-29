@@ -27,7 +27,7 @@ Click on the **Add to Dialogflow** button below and follow the prompts to create
  the action name and corresponding function handler on the actionMap in **index.js**.
 
 ## Test on the Actions on Google simulator
-1. Open [Dialogflow's *Integrations* page]](https://console.dialogflow.com/api-client/#/agent//integrations) from the left navigation menu and open the *Integration Settings* menu for Actions on Google.
+1. Open [Dialogflow's *Integrations* page](https://console.dialogflow.com/api-client/#/agent//integrations) from the left navigation menu and open the *Integration Settings* menu for Actions on Google.
 1. Enable *Auto-preview changes* and Click *Test*. This will open the Actions on Google simulator.
 1. Click *View* to open the Actions on Google simulator.
 1. Type `Talk to my test app` in the simulator, or say `OK Google, talk to my test app` to any Actions on Google enabled device signed into your developer account.
