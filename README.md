@@ -1,7 +1,7 @@
-# Actions on Google: Webhook Template using Node.js and Cloud Functions for Firebase
+# Actions on Google: Webhook Boilerplate using Node.js and Cloud Functions for Firebase
 
-This webhook template sets up everything you need to build your fulfillment
-business logic for your Assistant app built on Dialogflow.
+This webhook boilerplate sample sets up everything you need to build your fulfillment
+business logic for your Action for the Google Assistant built on Dialogflow.
 
 ## Setup Instructions
 Choose one of the two options listed below for setup. You only need to complete one of the two options below to setup this sample.
@@ -9,7 +9,7 @@ Choose one of the two options listed below for setup. You only need to complete 
 ### Option 1: Add to Dialogflow (recommended)
 Click on the **Add to Dialogflow** button below and follow the prompts to create a new agent:
 
-[![Webhook Template](https://storage.googleapis.com/dialogflow-oneclick/deploy.svg "Webhook Template")](https://console.dialogflow.com/api-client/oneclick?templateUrl=https%3A%2F%2Fstorage.googleapis.com%2Fdialogflow-oneclick%2Fagent.zip&agentName=ActionsOnGoogleTemplateSample)
+[![Webhook Boilerplate](https://storage.googleapis.com/dialogflow-oneclick/deploy.svg "Webhook Boilerplate")](https://console.dialogflow.com/api-client/oneclick?templateUrl=https%3A%2F%2Fstorage.googleapis.com%2Fdialogflow-oneclick%2Fagent.zip&agentName=ActionsOnGoogleTemplateSample)
 
 ### Option 2: Dialogflow restore and Firebase CLI
 1. Use the [Actions on Google Console](https://console.actions.google.com) to add a new project with a name of your choosing and click *Create Project*.
